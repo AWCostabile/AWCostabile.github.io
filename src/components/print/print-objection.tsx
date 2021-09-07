@@ -1,7 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { NON_BREAKING_SPACE } from "common/constants/app";
 import { useLanguage } from "common/hooks/use-language";
 import { IObjectionModel } from "common/models/objection";
 import React from "react";
@@ -25,19 +24,19 @@ const getBreaks = (concernsLines: number, suggestedChangesLines: number) => {
     totalLines,
   });
 
-  if (totalLines <= 10) {
+  if (totalLines <= 8) {
     return [false, false];
   }
 
-  if (totalLines >= 28) {
-    return [concernsLines > 16, true];
+  if (totalLines >= 26) {
+    return [concernsLines > 14, true];
   }
 
-  if (concernsLines > 16) {
+  if (concernsLines > 14) {
     return [true, false];
   }
 
-  return [false, concernsLines > 6 || suggestedChangesLines > 4];
+  return [false, concernsLines > 5 || suggestedChangesLines > 3];
 };
 
 interface IPrintObjectionProps {
@@ -92,7 +91,11 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({
     <React.Fragment>
       {breaks.concernsBreak && <div className="pagebreak" />}
       {breaks.concernsBreak && (
-        <Typography variant="body1">{NON_BREAKING_SPACE}</Typography>
+        <Typography paragraph variant="body1">
+          <br />
+          <br />
+          <br />
+        </Typography>
       )}
       <Grid
         classes={{ root: breaks.concernsBreak ? classes.pageBreak : "" }}
@@ -104,7 +107,7 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({
           <PrintLine
             xs={12}
             label="Grounds of Objection*:"
-            minLines={6}
+            minLines={5}
             onLines={setConsersLines}
             value={values.objection.concerns}
           />
@@ -113,7 +116,11 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({
       </Grid>
       {breaks.suggestedChangesBreak && <div className="pagebreak" />}
       {breaks.suggestedChangesBreak && (
-        <Typography variant="body1">{NON_BREAKING_SPACE}</Typography>
+        <Typography paragraph variant="body1">
+          <br />
+          <br />
+          <br />
+        </Typography>
       )}
       <Grid
         classes={{
@@ -132,7 +139,7 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({
           </Grid>
           <PrintLine
             xs={12}
-            minLines={3}
+            minLines={2}
             onLines={setSuggestedChangesLines}
             value={values.objection.suggestedChanges}
           />

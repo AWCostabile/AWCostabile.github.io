@@ -15,6 +15,10 @@ export const PrintPrivacy: React.FC = () => {
   return (
     <React.Fragment>
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Grid item container xs={11}>
         <Typography classes={{ root: bold }} variant="body2">
           Please read the following explanatory advice:

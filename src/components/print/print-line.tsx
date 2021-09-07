@@ -75,7 +75,7 @@ export const PrintLine: React.FC<IPrintLine> = ({
   const [lines, setLines] = useState(0);
 
   useEffect(() => {
-    if (!textField.current) {
+    if (!textField.current || minLines === undefined) {
       return;
     }
 
@@ -145,4 +145,3 @@ export const PrintLine: React.FC<IPrintLine> = ({
     </Grid>
   );
 };
-// minLines

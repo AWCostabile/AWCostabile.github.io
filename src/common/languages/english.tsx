@@ -18,7 +18,7 @@ export const english: ILanguage = {
 
   buttons: {
     hide:                                     "Hide",
-    printObjectionForm:                       "Download Object Form",
+    printObjectionForm:                       "Click here to print",
     show:                                     "Show",
   },
   document: {
@@ -39,7 +39,8 @@ export const english: ILanguage = {
     "proposal.description":                   "Description of Proposal",
   },
   miscellaneous: {
-    hiddenFields: "Fields are hidden",
+    hiddenFields:                             "Fields are hidden",
+    qrCodeLabel:                              "Share this form!",
   },
   placeholder: {
     "concernedParty.contactAddress":          "Enter your residential address",

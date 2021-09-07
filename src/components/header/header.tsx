@@ -29,6 +29,9 @@ const useStyles = makeStyles(() => ({
   menu: {
     justifyContent: "center",
   },
+  option: {
+    justifyContent: "center",
+  },
 }));
 
 const toLabel = (current: string, friendly: string, name: string) => {
@@ -43,7 +46,7 @@ export const Header: React.FC = () => {
   const anchorEl = useRef<HTMLButtonElement | null>(null);
   const { currentLanguage, setLanguage, strings } = useLanguage();
   const [open, setOpen] = useState(false);
-  const { button, container, icon, menu } = useStyles();
+  const { button, container, icon, menu, option } = useStyles();
 
   return (
     <PageSection
@@ -52,7 +55,9 @@ export const Header: React.FC = () => {
       justify="space-between"
       padding={{ all: 16 }}
     >
-      <Typography variant="h6">{strings.titles.header}</Typography>
+      <Typography variant="h6">
+        {strings.titles.header} - <em>bit.ly/3h7gip1</em>
+      </Typography>
       <div className={container}>
         <Button
           aria-controls={open ? "menu-list-grow" : undefined}
@@ -88,6 +93,7 @@ export const Header: React.FC = () => {
                   <MenuList autoFocusItem={open} classes={{ root: menu }}>
                     {language.meta.map(({ friendly, label, value }) => (
                       <MenuItem
+                        classes={{ root: option }}
                         key={value}
                         onClick={() => {
                           setOpen(false);
