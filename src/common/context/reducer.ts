@@ -11,14 +11,25 @@ export const appContextReducer = (
   action: AppContextActions
 ): IAppContextState => {
   switch (action.type) {
+    case AppContextAction.DONE:
+      return { ...state, save: false };
+
+    case AppContextAction.LANGUAGE:
+      return { ...state, language: action.language, save: true };
+
     case AppContextAction.PRINT:
-      return { view: AppView.PRINT, values: action.values };
+      return {
+        ...state,
+        save: true,
+        view: AppView.PRINT,
+        values: action.values,
+      };
 
     case AppContextAction.RESET:
       return { ...state, values: defaultFormData };
 
     case AppContextAction.SAVE:
-      return { ...state, values: action.values };
+      return { ...state, save: true, values: action.values };
 
     case AppContextAction.VIEW:
       return { ...state, view: action.view };

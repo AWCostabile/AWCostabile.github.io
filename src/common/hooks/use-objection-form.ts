@@ -1,5 +1,5 @@
 import { AppContext } from "common/context";
-import { IObjectionModel } from "common/models/form-model";
+import { IObjectionModel } from "common/models/objection";
 import { useContext } from "react";
 import { useInterval } from "./use-interval";
 

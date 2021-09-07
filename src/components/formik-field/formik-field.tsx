@@ -1,5 +1,6 @@
-import { useField } from "formik";
 import TextField, { TextFieldProps } from "@material-ui/core/TextField";
+import { useLanguage } from "common/hooks/use-language";
+import { useField } from "formik";
 
 const fieldProps = {
   fullWidth: true,
@@ -18,8 +19,11 @@ export const FormikField: React.FC<IFormikFieldProps> = ({
   ...props
 }) => {
   const [{ onBlur, onChange }, { error, touched, value }] = useField(name);
+  const { strings } = useLanguage();
 
   const hasError = touched && !!error;
+  const label = strings.labels[name];
+  const placeholder = strings.placeholder[name];
 
   return (
     <TextField
@@ -27,6 +31,7 @@ export const FormikField: React.FC<IFormikFieldProps> = ({
       {...props}
       aria-readonly={readonly || props["aria-readonly"]}
       error={hasError}
+      label={typeof label === "string" ? label : props.label}
       helperText={hasError && error}
       name={name}
       onBlur={(event) => {
@@ -43,6 +48,9 @@ export const FormikField: React.FC<IFormikFieldProps> = ({
 
         onChange(event);
       }}
+      placeholder={
+        typeof placeholder === "string" ? placeholder : props.placeholder
+      }
       value={value}
     />
   );

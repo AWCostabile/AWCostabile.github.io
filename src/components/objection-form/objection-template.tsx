@@ -3,8 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useGrid } from "common/hooks/use-grid";
-import { useObjectionForm } from "common/hooks/use-objection-form";
-import { IObjectionModel } from "common/models/form-model";
+import { useLanguage } from "common/hooks/use-language";
+import { IObjectionModel } from "common/models/objection";
 import { Expandable } from "components/expandable";
 import { FormikField } from "components/formik-field";
 import { HideButton } from "components/hide-button";
@@ -14,6 +14,7 @@ import { paddingStyles } from "styles/utils";
 import { ObjectionFormInformation } from "./objection-info";
 
 const useStyles = makeStyles(() => ({
+  centered: { textAlign: "center" },
   italics: { fontStyle: "italic " },
   root: { ...paddingStyles.toProps(16) },
 }));
@@ -22,13 +23,12 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
   submitForm,
   values,
 }) => {
-  const { italics, root } = useStyles();
+  const { strings } = useLanguage();
+  const { centered, italics, root } = useStyles();
   const { GridFour, GridEight, GridTwelve } = useGrid(root);
 
   const [showApplicant, setShowApplicant] = useState(false);
   const [showConcernedParty, setShowConcernedParty] = useState(true);
-
-  useObjectionForm(values);
 
   return (
     <React.Fragment>
@@ -39,7 +39,7 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
       </Grid>
       <Grid container>
         <GridTwelve>
-          <Typography variant="h6">Planning Permit being Objected</Typography>
+          <Typography variant="h6">{strings.titles.proposal}</Typography>
           <hr />
           <Grid container justifyContent="space-between">
             <Grid item>
@@ -49,8 +49,8 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
                 variant="body1"
               >
                 {showApplicant
-                  ? "Fields are pre-populated for your convenience"
-                  : "Fields are hidden"}
+                  ? strings.sections.proposal
+                  : strings.miscellaneous.hiddenFields}
               </Typography>
             </Grid>
             <Grid item>
@@ -101,7 +101,7 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           <Expandable open={showApplicant}>
             <br />
           </Expandable>
-          <Typography variant="h6">Concerned Party (You)</Typography>
+          <Typography variant="h6">{strings.titles.concernedParty}</Typography>
           <hr />
           <Grid container justifyContent="space-between">
             <Grid item>
@@ -113,8 +113,8 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
                 variant="body1"
               >
                 {showConcernedParty
-                  ? "Enter your details as accurately as possible"
-                  : "Fields are hidden"}
+                  ? strings.sections.concernedParty
+                  : strings.miscellaneous.hiddenFields}
               </Typography>
             </Grid>
             <Grid item>
@@ -170,11 +170,10 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           <Expandable open={showConcernedParty}>
             <br />
           </Expandable>
-          <Typography variant="h6">Objection Details</Typography>
+          <Typography variant="h6">{strings.titles.objection}</Typography>
           <hr />
           <Typography variant="body1" align="justify">
-            Enter your concerns and reasons for this object, as well as any
-            changes you'd like to see
+            {strings.sections.objection}
           </Typography>
         </GridTwelve>
       </Grid>
@@ -203,9 +202,9 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
         </GridTwelve>
       </Grid>
       <Grid container>
-        <GridTwelve>
-          <Button onClick={submitForm} variant="contained">
-            Download Objection Form
+        <GridTwelve classes={{ root: centered }}>
+          <Button color="primary" onClick={submitForm} variant="contained">
+            {strings.buttons.printObjectionForm}
           </Button>
         </GridTwelve>
       </Grid>

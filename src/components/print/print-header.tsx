@@ -2,7 +2,9 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { IObjectionModel } from "common/models/form-model";
+import { NON_BREAKING_SPACE } from "common/constants/app";
+import { useLanguage } from "common/hooks/use-language";
+import { IObjectionModel } from "common/models/objection";
 import Logo from "images/logo.gif";
 import React from "react";
 import { PrintLine } from "./print-line";
@@ -20,6 +22,11 @@ const useStyles = makeStyles(() => ({
     fontSize: 18,
     fontWeight: 600,
   },
+  languageLabel: {
+    color: "#C22",
+    paddingTop: 12,
+    paddingBottom: 12,
+  },
   value: {
     fontSize: 24,
     fontWeight: 600,
@@ -31,7 +38,15 @@ interface IPrintHeaderProps {
 }
 
 export const PrintHeader: React.FC<IPrintHeaderProps> = ({ values }) => {
-  const { box, boxTextBody, boxTextTitle, formTitle, ...classes } = useStyles();
+  const { currentLanguage, strings } = useLanguage();
+  const {
+    box,
+    boxTextBody,
+    boxTextTitle,
+    formTitle,
+    languageLabel,
+    ...classes
+  } = useStyles();
 
   return (
     <Grid item container xs={11}>
@@ -39,7 +54,15 @@ export const PrintHeader: React.FC<IPrintHeaderProps> = ({ values }) => {
         <Typography classes={{ root: formTitle }} variant="h4">
           Objection to Grant a Planning Permit
         </Typography>
-        <br />
+        <Typography classes={{ root: languageLabel }} variant="body1">
+          {currentLanguage === "english" ? (
+            NON_BREAKING_SPACE
+          ) : (
+            <em>
+              Original language submitted <strong>{strings.nameEnglish}</strong>
+            </em>
+          )}
+        </Typography>
         <br />
         <PrintLine
           xs={12}

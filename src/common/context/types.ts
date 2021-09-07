@@ -1,6 +1,9 @@
-import { IObjectionModel } from "common/models/form-model";
+import { ILanguage } from "common/models/language";
+import { IObjectionModel } from "common/models/objection";
 
 export enum AppContextAction {
+  DONE,
+  LANGUAGE,
   PRINT,
   RESET,
   SAVE,
@@ -13,6 +16,8 @@ export enum AppView {
 }
 
 export interface IAppContextState {
+  language: string;
+  save: boolean;
   values: IObjectionModel;
   view: AppView;
 }
@@ -20,19 +25,25 @@ export interface IAppContextState {
 export interface IAppContext {
   printData: (values: IObjectionModel) => void;
   resetData: () => void;
+  setLanguage: (language: string) => void;
   saveData: (values: IObjectionModel) => void;
   toFormView: () => void;
   toPrintView: () => void;
   state: IAppContextState;
+  strings: ILanguage;
 }
 
 export type AppContextActions =
+  | {
+      language: string;
+      type: AppContextAction.LANGUAGE;
+    }
   | {
       values: IObjectionModel;
       type: AppContextAction.PRINT;
     }
   | {
-      type: AppContextAction.RESET;
+      type: AppContextAction.DONE | AppContextAction.RESET;
     }
   | {
       values: IObjectionModel;

@@ -4,6 +4,10 @@ body,
   height: 100%;
 }
 
+#root {
+  overflow-y: hidden;
+}
+
 #root > .form-root {
   overflow-y: scroll;
   position: relative;
@@ -36,13 +40,27 @@ a:hover {
   color: #28f;
 }
 
-.print-root {
+.print-content {
   max-width: 720px;
 }
 
 @media print {
+  #root {
+    overflow-y: initial;
+  }
+
+  .form-root,
   .no-print,
   .no-print * {
     display: none !important;
+  }
+
+  .print-root {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagebreak {
+    page-break-before: always;
   }
 }

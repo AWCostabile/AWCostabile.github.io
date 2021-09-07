@@ -1,4 +1,3 @@
-import Typography from "@material-ui/core/Typography";
 import { Content } from "components/content";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
@@ -8,9 +7,7 @@ import React from "react";
 export const FormViewPage: React.FC = () => (
   <div className="form-root">
     <PageLayout>
-      <Header>
-        <Typography variant="h6">Objection Helper</Typography>
-      </Header>
+      <Header />
       <Content />
       <Footer>&copy; 2021 - Anthony Costabile</Footer>
     </PageLayout>
