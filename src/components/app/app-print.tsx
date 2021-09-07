@@ -7,7 +7,9 @@ export const PrintViewPage: React.FC = () => {
 
   return (
     <div className="print-root">
-      <PrintView values={values} />
+      <div className="print-content">
+        <PrintView values={values} />
+      </div>
     </div>
   );
 };

@@ -7,14 +7,10 @@ import { PrintViewPage } from "./app-print";
 export const App: React.FC = () => {
   const { view } = useAppView();
 
-  switch (view) {
-    case AppView.FORM:
-      return <FormViewPage />;
-
-    case AppView.PRINT:
-      return <PrintViewPage />;
-
-    default:
-      return null;
-  }
+  return (
+    <>
+      <FormViewPage />
+      {view === AppView.PRINT && <PrintViewPage />}
+    </>
+  );
 };

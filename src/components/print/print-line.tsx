@@ -15,7 +15,8 @@ interface IPrintLine extends Omit<GridProps, "classes"> {
   };
   label?: string;
   minLines?: number;
-  subLabel?: string;
+  onLines?: (lines: number) => void;
+  subLabel?: ReactNode;
   value?: ReactNode;
 }
 
@@ -54,12 +55,16 @@ const useStyles = makeStyles<Theme, { subLabel?: boolean }>(() => ({
     color: "#333",
     fontSize: "1rem",
   },
+  value: {
+    whiteSpace: "pre-wrap",
+  },
 }));
 
 export const PrintLine: React.FC<IPrintLine> = ({
   children,
   classes: classesProp = {},
   label,
+  onLines,
   minLines,
   subLabel,
   value,
@@ -80,6 +85,14 @@ export const PrintLine: React.FC<IPrintLine> = ({
     setLines(Math.max(linesToAdd, minLines ?? 0));
   }, [minLines]);
 
+  useEffect(() => {
+    if (!onLines || !lines) {
+      return;
+    }
+
+    onLines(lines);
+  }, [lines, onLines]);
+
   return (
     <Grid xs={12} {...props} classes={{ root: classes.container }} item>
       <div className={classes.dots}>
@@ -92,9 +105,10 @@ export const PrintLine: React.FC<IPrintLine> = ({
           {TEXT_DOTS}
         </Typography>
         {lines > 0 &&
-          Array.from(Array(lines)).map((_) => (
+          Array.from(Array(lines)).map((_, index) => (
             <Typography
               classes={{ root: classes.lineHeight }}
+              key={index}
               noWrap
               variant="body2"
             >
@@ -105,7 +119,13 @@ export const PrintLine: React.FC<IPrintLine> = ({
       </div>
       <div className={classes.text} ref={textField}>
         <Typography
-          classes={{ root: classNames(classes.lineHeight, classesProp.value) }}
+          classes={{
+            root: classNames(
+              classes.lineHeight,
+              classes.value,
+              classesProp.value
+            ),
+          }}
           variant="body2"
           align="justify"
         >

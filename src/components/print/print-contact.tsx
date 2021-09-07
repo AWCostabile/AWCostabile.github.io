@@ -1,6 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { IObjectionModel } from "common/models/form-model";
+import { IObjectionModel } from "common/models/objection";
 import React from "react";
 import { PrintLine } from "./print-line";
 

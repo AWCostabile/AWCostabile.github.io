@@ -1,4 +1,4 @@
-import { IObjectionModel } from "common/models/form-model";
+import { IObjectionModel } from "common/models/objection";
 
 export const defaultFormData: IObjectionModel = {
   proposal: {
