@@ -13,7 +13,7 @@ import { language } from "common/languages";
 import { PageSection } from "components/page-section";
 import React, { useRef, useState } from "react";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   button: {
     color: "#FFF",
     width: 250,
@@ -32,6 +32,11 @@ const useStyles = makeStyles(() => ({
   option: {
     justifyContent: "center",
   },
+  root: {
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center !important",
+    },
+  },
 }));
 
 const toLabel = (current: string, friendly: string, name: string) => {
@@ -46,18 +51,17 @@ export const Header: React.FC = () => {
   const anchorEl = useRef<HTMLButtonElement | null>(null);
   const { currentLanguage, setLanguage, strings } = useLanguage();
   const [open, setOpen] = useState(false);
-  const { button, container, icon, menu, option } = useStyles();
+  const { button, container, icon, menu, option, root } = useStyles();
 
   return (
     <PageSection
+      className={root}
       background="#28C"
       color="#F2F2F2"
       justify="space-between"
       padding={{ all: 16 }}
     >
-      <Typography variant="h6">
-        {strings.titles.header} - <em>bit.ly/3h7gip1</em>
-      </Typography>
+      <Typography variant="h6">{strings.titles.header}</Typography>
       <div className={container}>
         <Button
           aria-controls={open ? "menu-list-grow" : undefined}

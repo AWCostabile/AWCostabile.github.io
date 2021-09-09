@@ -19,19 +19,14 @@ export const createPrintReducer = <Type>(printHelper: PrintHelper<Type>) => {
     switch (action.type) {
       case PrintContextAction.ADD_QUEUE:
         if (state.status !== PrintContextStatus.IDLE) {
-          console.log(action, state, "UNCHANGED");
           return state;
         }
 
-        const nextState = action.queue.reduce(
+        return action.queue.reduce(
           (prev, item) =>
             reducer(prev, { ...item, type: PrintContextAction.SET_TEXT }),
           state
         );
-
-        console.log(action, state, nextState);
-
-        return nextState;
 
       case PrintContextAction.SET_TEXT:
         return {

@@ -44,6 +44,7 @@ export const chinese: ILanguage = {
   },
   miscellaneous: {
     hiddenFields:                             "Fields are hidden",
+    hiddenText:                               "Text is hidden",
     qrCodeLabel:                              "Share this form!",
   },
   placeholder: {
@@ -70,6 +71,7 @@ export const chinese: ILanguage = {
     header:                                   "反對小幫手",
     proposal:                                 "反對的規劃項目",
     objection:                                "反對內容",
+    signature:                                "Use the area below to record a signature",
   },
   validations: {
     "concernedParty.contactAddress":          "A residential address is required",

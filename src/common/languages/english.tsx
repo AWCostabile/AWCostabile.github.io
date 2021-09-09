@@ -44,6 +44,7 @@ export const english: ILanguage = {
   },
   miscellaneous: {
     hiddenFields:                             "Fields are hidden",
+    hiddenText:                               "Text is hidden",
     qrCodeLabel:                              "Share this form!",
   },
   placeholder: {
@@ -70,6 +71,7 @@ export const english: ILanguage = {
     header:                                   "Objection Helper",
     proposal:                                 "Planning Permit being Objected",
     objection:                                "Objection Details",
+    signature:                                "Use the area below to record a signature",
   },
   validations: {
     "concernedParty.contactAddress":          "A residential address is required",
@@ -126,14 +128,6 @@ export const english: ILanguage = {
         may affect public safety, how it may be a nuisance such as impact on
         parking, and how it may negatively impact the character of Glen
         Wavelery.
-      </>,
-      <>
-        Unfortunately, there is a high likelihood that this development will
-        indeed go ahead however the size and scope of the development may be
-        influenced by the number of objections made and the willingness to find
-        a compromise, so it is <strong>strongly</strong> recommended that you
-        make suggestions as to the sorts of changes to this development you
-        would be willing to consider.
       </>,
       <>
         Unfortunately, there is a high likelihood that this development will

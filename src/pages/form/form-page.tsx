@@ -5,6 +5,7 @@ import { IObjectionModel } from "common/models/objection";
 import { Content } from "components/content";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
+import { Link } from "components/link";
 import { PageLayout } from "components/page-layout";
 import { Formik } from "formik";
 import Logo from "images/frame.svg";
@@ -49,8 +50,10 @@ export const FormViewPage: React.FC<{ isMobile?: boolean }> = ({
         <br />
         <hr />
         <img id="qr-code" src={Logo} alt="QR Code" />
-        <Typography variant="body1">
+        <Typography style={{ textAlign: "center" }} variant="body1">
           {strings.miscellaneous.qrCodeLabel}
+          <br />
+          <Link to="http://bit.ly/3h7gip1">bit.ly/3h7gip1</Link>
         </Typography>
         <br />
         <Footer>&copy; 2021 - Anthony Costabile</Footer>

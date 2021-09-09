@@ -47,11 +47,13 @@ export const createValidationSchema = (validations: ILanguageValidations) =>
     proposal: Yup.object().shape({
       applicantLand: Yup.string(),
       applicationName: Yup.string(),
-      applicationNumber: Yup.string().required(),
+      applicationNumber: Yup.string().required(
+        validations["proposal.applicationNumber"]
+      ),
       description: Yup.string(),
     }),
     objection: Yup.object().shape({
-      concerns: Yup.string().required(),
+      concerns: Yup.string().required(validations["objection.concerns"]),
       suggestedChanges: Yup.string(),
     }),
   });

@@ -57,6 +57,7 @@ export interface ILanguage extends ILanguageData {
   labels: ILanguageField;
   miscellaneous: {
     hiddenFields: string;
+    hiddenText: string;
     qrCodeLabel: string;
   };
   icon: string;
@@ -74,6 +75,7 @@ export interface ILanguage extends ILanguageData {
     header: string;
     proposal: string;
     objection: string;
+    signature: string;
   };
   translationBy: string;
   validations: ILanguageValidations;

@@ -3,8 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { useMemo } from "react";
 import { paddingStyles, SideStyle } from "styles/utils";
+import { classNames } from "utils/class-names";
 
 interface IPageSectionStyles {
+  className?: string;
   background?: string;
   color?: string;
   fontSize?: string | number;
@@ -15,7 +17,10 @@ interface IPageSectionStyles {
   stretch?: boolean;
 }
 
-const useStyles = makeStyles<{}, IPageSectionStyles>(() => ({
+const useStyles = makeStyles<
+  {},
+  Omit<IPageSectionStyles, "className" | "justify">
+>(() => ({
   padding: ({ color, fontSize, padding }) =>
     padding ? { color, fontSize, ...paddingStyles.toProps(padding) } : {},
   root: ({
@@ -42,6 +47,7 @@ const useStyles = makeStyles<{}, IPageSectionStyles>(() => ({
 
 export const PageSection: React.FC<IPageSectionStyles> = ({
   children,
+  className,
   justify = "center",
   ...props
 }) => {
@@ -52,7 +58,7 @@ export const PageSection: React.FC<IPageSectionStyles> = ({
       props.padding
         ? ({ children }) => (
             <Grid
-              classes={{ root: classes.padding }}
+              classes={{ root: classNames(classes.padding, className) }}
               container
               item
               justifyContent={justify}
@@ -61,12 +67,12 @@ export const PageSection: React.FC<IPageSectionStyles> = ({
             </Grid>
           )
         : React.Fragment,
-    [classes.padding, justify, props.padding]
+    [className, classes.padding, justify, props.padding]
   );
 
   return (
     <Grid
-      classes={{ root: classes.root }}
+      classes={{ root: classNames(classes.root, props.padding && className) }}
       container
       item
       justifyContent={props.padding ? undefined : justify}

@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { TEXT_COLOR } from "common/constants/app";
 import { useGrid } from "common/hooks/use-grid";
 import { useLanguage } from "common/hooks/use-language";
-import { useObjectionForm } from "common/hooks/use-objection-form";
+// import { useObjectionForm } from "common/hooks/use-objection-form";
 import { IObjectionModel } from "common/models/objection";
 import { Expandable } from "components/expandable";
 import { FormikField } from "components/formik-field";
@@ -48,7 +48,7 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
 }) => {
   const { centered, italics, left, right, root, signatureStyles } = useStyles();
 
-  useObjectionForm(values, 10000);
+  // useObjectionForm(values, 10000);
   const { GridFour, GridSix, GridEight, GridTwelve } = useGrid(root);
   const { strings } = useLanguage();
 
@@ -62,11 +62,11 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
     () => (
       <Grid container>
         <GridTwelve>
-          <ObjectionFormInformation />
+          <ObjectionFormInformation italics={italics} />
         </GridTwelve>
       </Grid>
     ),
-    [GridTwelve]
+    [GridTwelve, italics]
   );
 
   const onSignature = useCallback(
@@ -89,6 +89,9 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
       <React.Fragment>
         {informationSection}
         <Grid container>
+          <GridTwelve>
+            <Typography variant="h6">{strings.titles.signature}</Typography>
+          </GridTwelve>
           <GridTwelve classes={{ root: centered }}>
             <signature.Component
               onBegin={() => !withSignature && setWithSignature(true)}
@@ -136,19 +139,9 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
       {informationSection}
       <Grid container>
         <GridTwelve>
-          <Typography variant="h6">{strings.titles.proposal}</Typography>
-          <hr />
           <Grid container justifyContent="space-between">
             <Grid item>
-              <Typography
-                align="justify"
-                classes={{ root: showApplicant ? undefined : italics }}
-                variant="body1"
-              >
-                {showApplicant
-                  ? strings.sections.proposal
-                  : strings.miscellaneous.hiddenFields}
-              </Typography>
+              <Typography variant="h6">{strings.titles.proposal}</Typography>
             </Grid>
             <Grid item>
               <HideButton
@@ -157,6 +150,16 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
               />
             </Grid>
           </Grid>
+          <hr />
+          <Typography
+            align="justify"
+            classes={{ root: showApplicant ? undefined : italics }}
+            variant="body1"
+          >
+            {showApplicant
+              ? strings.sections.proposal
+              : strings.miscellaneous.hiddenFields}
+          </Typography>
         </GridTwelve>
       </Grid>
       <Expandable open={showApplicant}>
@@ -198,20 +201,10 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           <Expandable open={showApplicant}>
             <br />
           </Expandable>
-          <Typography variant="h6">{strings.titles.concernedParty}</Typography>
-          <hr />
           <Grid container justifyContent="space-between">
             <Grid item>
-              <Typography
-                align="justify"
-                classes={{
-                  root: showConcernedParty ? undefined : italics,
-                }}
-                variant="body1"
-              >
-                {showConcernedParty
-                  ? strings.sections.concernedParty
-                  : strings.miscellaneous.hiddenFields}
+              <Typography variant="h6">
+                {strings.titles.concernedParty}
               </Typography>
             </Grid>
             <Grid item>
@@ -221,6 +214,18 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
               />
             </Grid>
           </Grid>
+          <hr />
+          <Typography
+            align="justify"
+            classes={{
+              root: showConcernedParty ? undefined : italics,
+            }}
+            variant="body1"
+          >
+            {showConcernedParty
+              ? strings.sections.concernedParty
+              : strings.miscellaneous.hiddenFields}
+          </Typography>
         </GridTwelve>
       </Grid>
       <Expandable open={showConcernedParty}>
