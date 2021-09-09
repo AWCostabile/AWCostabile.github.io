@@ -9,6 +9,11 @@ export const useGrid = (className: string) =>
           <div className={className}>{children}</div>
         </Grid>
       ),
+      GridSix: ({ children, ...props }: PropsWithChildren<GridProps>) => (
+        <Grid item xs={12} lg={6} {...props}>
+          <div className={className}>{children}</div>
+        </Grid>
+      ),
       GridEight: ({ children, ...props }: PropsWithChildren<GridProps>) => (
         <Grid item xs={12} lg={6} xl={8} {...props}>
           <div className={className}>{children}</div>

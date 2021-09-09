@@ -6,8 +6,8 @@ export const PROPOSAL_LINK =
 
 export const LOCAL_STORAGE_KEY = "objection-data";
 
-export const TEXT_DOTS = Array.from(Array(127))
-  .map((_) => ".")
-  .join(".");
-
 export const NON_BREAKING_SPACE = "\u00A0";
+
+export const RESIZE_TIMEOUT = 1000;
+
+export const TEXT_COLOR = "#048";

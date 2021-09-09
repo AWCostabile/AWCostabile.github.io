@@ -17,8 +17,12 @@ export const english: ILanguage = {
   // ==========================================================================
 
   buttons: {
+    cancel:                                   "Cancel",
+    createDigitalObjectionForm:               "Create Digitally Signed Document",
+    createPrintObjectionForm:                 "Create Physically Printed Document",
+    go:                                       "Go",
     hide:                                     "Hide",
-    printObjectionForm:                       "Download Object Form",
+    reset:                                    "Reset",
     show:                                     "Show",
   },
   document: {
@@ -66,6 +70,15 @@ export const english: ILanguage = {
     header:                                   "Objection Helper",
     proposal:                                 "Planning Permit being Objected",
     objection:                                "Objection Details",
+  },
+  validations: {
+    "concernedParty.contactAddress":          "A residential address is required",
+    "concernedParty.contactEmail":            "Invalid email address detected",
+    "concernedParty.contactName":             "At least one contact name is required",
+    "concernedParty.contactPhone":            "Invalid phone number detected",
+    "concernedParty.contactPostCode":         "A valid post code is required",
+    "objection.concerns":                     "You must supply a reason for your objection",
+    "proposal.applicationNumber":             "An application number is mandatory",
   },
 
 

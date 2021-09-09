@@ -27,6 +27,10 @@ export const getSaveData = (): IAppData => {
 
   return {
     form: {
+      authority: {
+        date: Date.now(),
+        signature: "",
+      },
       concernedParty: {
         ...defaultFormData.concernedParty,
         ...form.concernedParty,

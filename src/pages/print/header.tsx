@@ -4,10 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { NON_BREAKING_SPACE } from "common/constants/app";
 import { useLanguage } from "common/hooks/use-language";
-import { IObjectionModel } from "common/models/objection";
+import { PrintLine } from "components/print-line";
 import Logo from "images/logo.gif";
 import React from "react";
-import { PrintLine } from "./print-line";
+import { IPrintPageCommonProps } from "./common";
 
 const useStyles = makeStyles(() => ({
   box: {
@@ -33,11 +33,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-interface IPrintHeaderProps {
-  values: IObjectionModel;
-}
-
-export const PrintHeader: React.FC<IPrintHeaderProps> = ({ values }) => {
+export const PrintHeader: React.FC<IPrintPageCommonProps> = ({ values }) => {
   const { currentLanguage, strings } = useLanguage();
   const {
     box,
@@ -59,13 +55,12 @@ export const PrintHeader: React.FC<IPrintHeaderProps> = ({ values }) => {
             NON_BREAKING_SPACE
           ) : (
             <em>
-              Original language submitted <strong>{strings.nameEnglish}</strong>
+              Language: <strong>{strings.nameEnglish}</strong>
             </em>
           )}
         </Typography>
         <br />
         <PrintLine
-          xs={12}
           classes={classes}
           label="Application Number:"
           subLabel="*Indicates required fields to be completed"

@@ -1,4 +1,8 @@
 export interface IObjectionModel {
+  authority: {
+    date: number;
+    signature: string;
+  };
   concernedParty: {
     contactName: string;
     contactEmail: string;

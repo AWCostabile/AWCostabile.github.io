@@ -1,6 +1,10 @@
 import { IObjectionModel } from "common/models/objection";
 
 export const defaultFormData: IObjectionModel = {
+  authority: {
+    date: Date.now(),
+    signature: "",
+  },
   proposal: {
     applicantLand: "251 -261 Springvale Road, Glen Waverley",
     applicationName: "Hongxing Springvale Road Pty Ltd",

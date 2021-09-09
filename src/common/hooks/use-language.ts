@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "common/context";
+import { AppContext } from "common/context/app";
 
 export const useLanguage = () => {
   const { setLanguage, state, strings } = useContext(AppContext);

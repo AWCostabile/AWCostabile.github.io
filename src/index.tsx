@@ -1,5 +1,5 @@
-import { AppProvider } from "common/context";
-import { App } from "components/app";
+import { AppProvider } from "common/context/app";
+import { App } from "pages/app";
 import React from "react";
 import { render } from "react-dom";
 import { getSaveData } from "utils/local-storage";

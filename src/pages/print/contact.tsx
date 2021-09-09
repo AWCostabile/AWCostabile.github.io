@@ -1,8 +1,8 @@
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { IObjectionModel } from "common/models/objection";
+import { PrintLine } from "components/print-line";
 import React from "react";
-import { PrintLine } from "./print-line";
+import { IPrintPageCommonProps } from "./common";
 
 const useStyles = makeStyles(() => ({
   label: {
@@ -13,21 +13,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const PrintContact: React.FC<{ values: IObjectionModel }> = ({
-  values,
-}) => {
+export const PrintContact: React.FC<IPrintPageCommonProps> = ({ values }) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <Grid item container xs={11}>
+        <PrintLine label="I/We*:" value={values.concernedParty.contactName} />
         <PrintLine
-          xs={12}
-          label="I/We*:"
-          value={values.concernedParty.contactName}
-        />
-        <PrintLine
-          xs={12}
           label="Of (Address)*:"
           value={values.concernedParty.contactAddress}
         />
@@ -46,7 +39,6 @@ export const PrintContact: React.FC<{ values: IObjectionModel }> = ({
       </Grid>
       <Grid item container xs={11}>
         <PrintLine
-          xs={12}
           classes={classes}
           label="Email Address"
           subLabel="(Please refer to privacy statement below)"

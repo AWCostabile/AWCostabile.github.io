@@ -2,41 +2,138 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { TEXT_COLOR } from "common/constants/app";
 import { useGrid } from "common/hooks/use-grid";
 import { useLanguage } from "common/hooks/use-language";
+import { useObjectionForm } from "common/hooks/use-objection-form";
 import { IObjectionModel } from "common/models/objection";
 import { Expandable } from "components/expandable";
 import { FormikField } from "components/formik-field";
 import { HideButton } from "components/hide-button";
 import { FormikProps } from "formik";
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { paddingStyles } from "styles/utils";
-import { ObjectionFormInformation } from "./objection-info";
+import { ObjectionFormInformation } from "./info";
+import { useSignature } from "./signature";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   centered: { textAlign: "center" },
   italics: { fontStyle: "italic " },
+  left: {
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
+    },
+    textAlign: "left",
+  },
+  right: {
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
+    },
+    textAlign: "right",
+  },
   root: { ...paddingStyles.toProps(16) },
+  signatureStyles: {
+    border: "1px solid #444",
+    height: "40%",
+    minHeight: "400px",
+    width: "100%",
+  },
 }));
 
 export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
+  handleChange,
   submitForm,
   values,
+  validateForm,
 }) => {
+  const { centered, italics, left, right, root, signatureStyles } = useStyles();
+
+  useObjectionForm(values, 10000);
+  const { GridFour, GridSix, GridEight, GridTwelve } = useGrid(root);
   const { strings } = useLanguage();
-  const { centered, italics, root } = useStyles();
-  const { GridFour, GridEight, GridTwelve } = useGrid(root);
 
   const [showApplicant, setShowApplicant] = useState(false);
   const [showConcernedParty, setShowConcernedParty] = useState(true);
+  const [showSignatureView, setShowSignatureView] = useState(false);
+  const [withSignature, setWithSignature] = useState(false);
+  const signature = useSignature();
 
-  return (
-    <React.Fragment>
+  const informationSection = useMemo(
+    () => (
       <Grid container>
         <GridTwelve>
           <ObjectionFormInformation />
         </GridTwelve>
       </Grid>
+    ),
+    [GridTwelve]
+  );
+
+  const onSignature = useCallback(
+    (onClick: () => unknown, onComplete?: () => void) => () => {
+      const value = onClick() ?? "";
+
+      handleChange({
+        target: { name: "authority.signature", value },
+      });
+
+      if (onComplete) {
+        onComplete();
+      }
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
+
+  if (showSignatureView) {
+    return (
+      <React.Fragment>
+        {informationSection}
+        <Grid container>
+          <GridTwelve classes={{ root: centered }}>
+            <signature.Component
+              onBegin={() => !withSignature && setWithSignature(true)}
+              canvasProps={{ className: signatureStyles }}
+              penColor={TEXT_COLOR}
+            />
+          </GridTwelve>
+        </Grid>
+        <Grid classes={{ root }} item container justifyContent="space-between">
+          <Button
+            color="primary"
+            onClick={onSignature(() => setShowSignatureView(false))}
+            variant="outlined"
+          >
+            {strings.buttons.cancel}
+          </Button>
+          <Button
+            color="primary"
+            disabled={!withSignature}
+            onClick={onSignature(signature.reset, () =>
+              setWithSignature(false)
+            )}
+            variant="outlined"
+          >
+            {strings.buttons.reset}
+          </Button>
+          <Button
+            color="primary"
+            disabled={!withSignature}
+            onClick={onSignature(signature.save, () => {
+              setShowSignatureView(false);
+              submitForm();
+            })}
+            variant="contained"
+          >
+            {strings.buttons.go}
+          </Button>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <React.Fragment>
+      {informationSection}
       <Grid container>
         <GridTwelve>
           <Typography variant="h6">{strings.titles.proposal}</Typography>
@@ -202,11 +299,28 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
         </GridTwelve>
       </Grid>
       <Grid container>
-        <GridTwelve classes={{ root: centered }}>
-          <Button color="primary" onClick={submitForm} variant="contained">
-            {strings.buttons.printObjectionForm}
+        <GridSix classes={{ root: left }}>
+          <Button
+            color="primary"
+            onClick={async () => {
+              const errors = await validateForm();
+
+              if (errors && Object.keys(errors).length > 0) {
+                submitForm();
+              } else {
+                setShowSignatureView(true);
+              }
+            }}
+            variant="outlined"
+          >
+            {strings.buttons.createDigitalObjectionForm}
           </Button>
-        </GridTwelve>
+        </GridSix>
+        <GridSix classes={{ root: right }}>
+          <Button color="primary" onClick={submitForm} variant="contained">
+            {strings.buttons.createPrintObjectionForm}
+          </Button>
+        </GridSix>
       </Grid>
     </React.Fragment>
   );

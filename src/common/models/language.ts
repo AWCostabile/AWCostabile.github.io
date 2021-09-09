@@ -24,10 +24,25 @@ export interface ILanguageField extends ILanguageData {
   "proposal.description": string;
 }
 
+export type ILanguageValidations = Pick<
+  ILanguageField,
+  | "concernedParty.contactAddress"
+  | "concernedParty.contactEmail"
+  | "concernedParty.contactName"
+  | "concernedParty.contactPhone"
+  | "concernedParty.contactPostCode"
+  | "objection.concerns"
+  | "proposal.applicationNumber"
+>;
+
 export interface ILanguage extends ILanguageData {
   buttons: {
+    cancel: string;
+    createDigitalObjectionForm: string;
+    createPrintObjectionForm: string;
+    go: string;
     hide: string;
-    printObjectionForm: string;
+    reset: string;
     show: string;
   };
   document: {
@@ -61,4 +76,5 @@ export interface ILanguage extends ILanguageData {
     objection: string;
   };
   translationBy: string;
+  validations: ILanguageValidations;
 }
