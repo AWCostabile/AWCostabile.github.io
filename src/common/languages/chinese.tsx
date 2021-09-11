@@ -9,7 +9,7 @@ export const chinese: ILanguage = {
 
   icon:                                       "false",
   name:                                       "中文",
-  nameEnglish:                                "Chinese - Simplified",
+  nameEnglish:                                "Chinese - Traditional",
 
 
   // ==========================================================================
@@ -17,12 +17,12 @@ export const chinese: ILanguage = {
   // ==========================================================================
 
   buttons: {
-    cancel:                                   "Cancel",
-    createDigitalObjectionForm:               "Create Digitally Signed Document",
+    cancel:                                   "取消",
+    createDigitalObjectionForm:               "電子簽名",
     createPrintObjectionForm:                 "打印反對書",
-    go:                                       "Go",
+    go:                                       "打印並發送",
     hide:                                     "隱藏",
-    reset:                                    "Reset",
+    reset:                                    "重設",
     show:                                     "顯示",
   },
   document: {
@@ -45,7 +45,7 @@ export const chinese: ILanguage = {
   miscellaneous: {
     hiddenFields:                             "Fields are hidden",
     hiddenText:                               "Text is hidden",
-    qrCodeLabel:                              "Share this form!",
+    qrCodeLabel:                              "掃描並分享",
   },
   placeholder: {
     "concernedParty.contactAddress":          "輸入住址",
@@ -71,7 +71,7 @@ export const chinese: ILanguage = {
     header:                                   "反對小幫手",
     proposal:                                 "反對的規劃項目",
     objection:                                "反對內容",
-    signature:                                "Use the area below to record a signature",
+    signature:                                "簽名",
   },
   validations: {
     "concernedParty.contactAddress":          "A residential address is required",
@@ -82,6 +82,7 @@ export const chinese: ILanguage = {
     "objection.concerns":                     "You must supply a reason for your objection",
     "proposal.applicationNumber":             "An application number is mandatory",
   },
+  warning:                                    "此申請不會傳送電郵到市議會。請使用預覧打印功能打印反對書或輸出成PDF檔。您必須親身傳送以確保正確提交您的反對。",
 
 
   // ==========================================================================
@@ -104,13 +105,13 @@ export const chinese: ILanguage = {
       <>
         此反對書的目的為幫助Glen Waverley居民對新公佈的計劃發展項目向市議會提出反對，項目地址位於
         <em>251-261 Springvale Road</em>。 項目內容為 21 層商住物業 (147住戶，6商鋪)。
-        填寫反對書時，請盡量提供詳細資料好讓您的反對聲音得到充分考慮。完成後請按頁面底部 “打印反對書” 確認相關資料並按以下途徑提交。
+        填寫反對書時，請盡量提供詳細資料好讓您的反對聲音得到充分考慮。完成後請按頁面底部 “打印反對書” 或可使用電子簽名後再打印，確認相關資料並按以下途徑提交。
       </>,
       <>
         您可以個人原因作為反對理據
         例如{" "}
         <strong>
-          <em>觀景被阻擋</em>
+          <em>景觀被阻擋</em>
         </strong>{" "}
         或{" "}
         <strong>
@@ -135,7 +136,7 @@ export const chinese: ILanguage = {
       <Link to={PROPOSAL_LINK}>
         Proposed development at 251 -261 Springvale Road, Glen Waverley
       </Link>,
-    ],
+    ]
   },
 
 

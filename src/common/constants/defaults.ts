@@ -23,4 +23,5 @@ export const defaultFormData: IObjectionModel = {
     concerns: "",
     suggestedChanges: "",
   },
+  withSignature: false,
 };

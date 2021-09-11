@@ -43,6 +43,7 @@ export const getSaveData = (): IAppData => {
         ...defaultFormData.proposal,
         ...form.proposal,
       },
+      withSignature: false,
     },
     language,
   };

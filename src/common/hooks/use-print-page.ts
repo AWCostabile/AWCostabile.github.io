@@ -2,12 +2,14 @@ import { useCallback, useEffect, useRef } from "react";
 import { sleep } from "utils/sleep";
 
 interface IUsePrintPageConfig {
+  handlePrint: () => void;
   isDebug?: boolean;
   isMobile?: boolean;
   toFormView: () => void;
 }
 
 export const usePrintPage = ({
+  handlePrint,
   isDebug,
   isMobile,
   toFormView,
@@ -16,9 +18,7 @@ export const usePrintPage = ({
 
   const onReady = useCallback(
     async () => {
-      if (global.window) {
-        requestAnimationFrame(global.window.print);
-      }
+      handlePrint();
 
       await sleep(100);
 

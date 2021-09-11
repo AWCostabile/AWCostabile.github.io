@@ -79,4 +79,5 @@ export interface ILanguage extends ILanguageData {
   };
   translationBy: string;
   validations: ILanguageValidations;
+  warning: string;
 }

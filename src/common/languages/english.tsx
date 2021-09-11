@@ -82,6 +82,7 @@ export const english: ILanguage = {
     "objection.concerns":                     "You must supply a reason for your objection",
     "proposal.applicationNumber":             "An application number is mandatory",
   },
+  warning:                                    "This application does 𝗡𝗢𝗧 send an email to the Monash City council. Use the print preview to either print the objection form OR export it as a PDF file. You 𝗠𝗨𝗦𝗧 send it yourself in order to make sure the objection is submitted!",
 
 
   // ==========================================================================

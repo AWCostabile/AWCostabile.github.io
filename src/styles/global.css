@@ -51,13 +51,27 @@ a:hover {
   left: 24px;
 }
 
+.print-content {
+  max-width: 720px;
+}
+
+.print-loader {
+  animation: fadeIn 0.25s ease-in;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
+}
+
 .print-root {
   display: flex;
   justify-content: center;
-}
-
-.print-content {
-  max-width: 720px;
 }
 
 @media not print {
@@ -76,7 +90,8 @@ a:hover {
 
   .form-root,
   .no-print,
-  .no-print * {
+  .no-print *,
+  .print-loader {
     display: none !important;
   }
 
@@ -84,17 +99,27 @@ a:hover {
     page-break-before: always;
   }
 
+  .print-content {
+    max-width: 720px;
+  }
+
   .print-root {
     display: flex;
     justify-content: center;
-  }
-
-  .print-content {
-    max-width: 720px;
   }
 }
 
 @page {
   size: A4;
   margin: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

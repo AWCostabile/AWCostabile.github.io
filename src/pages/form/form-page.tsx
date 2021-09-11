@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import { useLanguage } from "common/hooks/use-language";
 import { useSaveData } from "common/hooks/use-save-data";
 import { IObjectionModel } from "common/models/objection";
@@ -13,9 +13,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ObjectionFormTemplate } from "./template";
 import { createValidationSchema } from "./validations";
 
-export const FormViewPage: React.FC<{ isMobile?: boolean }> = ({
-  isMobile,
-}) => {
+export const FormViewPage: React.FC = () => {
   const { currentLanguage, strings } = useLanguage();
   const { initialValues, printData } = useSaveData();
   const [render, setRender] = useState(false);

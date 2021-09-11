@@ -1,3 +1,4 @@
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import { RESIZE_TIMEOUT } from "common/constants/app";
 import {
@@ -14,7 +15,7 @@ import { PrintProvider } from "common/context/print/provider";
 import { PrintValueType } from "common/context/print/types";
 import { usePrintPage } from "common/hooks/use-print-page";
 import { PrintBreak } from "components/print-break";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { classNames } from "utils/class-names";
 import { IPrintPageCommonProps } from "./common";
 import { PrintContact } from "./contact";
@@ -35,6 +36,21 @@ export const PrintViewPage: React.FC<IPrintPageProps> = ({
   toFormView,
   values,
 }) => {
+  const [spinner, setSpinner] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (spinner === true) {
+      return;
+    }
+
+    if (global.window) {
+      requestAnimationFrame(global.window.print);
+    }
+
+    setLoading(false);
+  }, [spinner]);
+
   const printConfig: IPrintHelperConfig<PrintValueType> = useMemo(
     () => ({
       offestType: PrintValueType.SUGGESTIONS,
@@ -60,12 +76,18 @@ export const PrintViewPage: React.FC<IPrintPageProps> = ({
 
   return (
     <div className={classNames("print-root", isDebug && "debug-root")}>
+      {loading && (
+        <div className="print-loader">{spinner && <CircularProgress />}</div>
+      )}
       <div className="print-content">
         {
           // Memoize static field elements
           useMemo(
             () => (
               <Grid container direction="column" alignItems="center">
+                <br />
+                <br />
+                <br />
                 <br />
                 <PrintHeader values={values} />
                 <PrintContact values={values} />
@@ -79,7 +101,12 @@ export const PrintViewPage: React.FC<IPrintPageProps> = ({
         <PrintProvider<PrintValueType>
           config={printConfig}
           resizeTimout={RESIZE_TIMEOUT}
-          onReady={usePrintPage({ isDebug, isMobile, toFormView })}
+          onReady={usePrintPage({
+            handlePrint: () => setSpinner(false),
+            isDebug,
+            isMobile,
+            toFormView,
+          })}
         >
           <PrintObjection isMobile={isMobile} values={values} />
         </PrintProvider>

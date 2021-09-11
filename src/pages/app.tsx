@@ -16,11 +16,14 @@ export const App: React.FC = () => {
     []
   );
 
+  const form = view === AppView.FORM;
+  const print = view === AppView.PRINT;
+
   if (isMobile) {
     return (
       <>
-        {view === AppView.FORM && <FormViewPage isMobile />}
-        {view === AppView.PRINT && (
+        {form && <FormViewPage />}
+        {print && (
           <PrintViewPage isMobile toFormView={toFormView} values={values} />
         )}
       </>
@@ -30,8 +33,8 @@ export const App: React.FC = () => {
   if (isDebug) {
     return (
       <>
-        {view === AppView.FORM && <FormViewPage />}
-        {view === AppView.PRINT && (
+        {form && <FormViewPage />}
+        {print && (
           <PrintViewPage isDebug toFormView={toFormView} values={values} />
         )}
       </>
@@ -41,9 +44,7 @@ export const App: React.FC = () => {
   return (
     <>
       <FormViewPage />
-      {view === AppView.PRINT && (
-        <PrintViewPage toFormView={toFormView} values={values} />
-      )}
+      {print && <PrintViewPage toFormView={toFormView} values={values} />}
     </>
   );
 };

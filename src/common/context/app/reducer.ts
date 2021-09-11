@@ -18,10 +18,13 @@ export const appContextReducer = (
       return { ...state, language: action.language, save: true };
 
     case AppContextAction.PRINT:
+      // eslint-disable-next-line no-restricted-globals
+      const view = confirm(action.warningText);
+
       return {
         ...state,
         save: true,
-        view: AppView.PRINT,
+        view: view ? AppView.PRINT : AppView.FORM,
         values: action.values,
       };
 

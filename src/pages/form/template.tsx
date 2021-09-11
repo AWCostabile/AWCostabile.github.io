@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
   handleChange,
   submitForm,
-  values,
   validateForm,
 }) => {
   const { centered, italics, left, right, root, signatureStyles } = useStyles();
@@ -52,10 +51,10 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
   const { GridFour, GridSix, GridEight, GridTwelve } = useGrid(root);
   const { strings } = useLanguage();
 
+  const [hasMarkedCanvas, setHasMarkedCanvas] = useState(false);
   const [showApplicant, setShowApplicant] = useState(false);
   const [showConcernedParty, setShowConcernedParty] = useState(true);
   const [showSignatureView, setShowSignatureView] = useState(false);
-  const [withSignature, setWithSignature] = useState(false);
   const signature = useSignature();
 
   const informationSection = useMemo(
@@ -67,6 +66,14 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
       </Grid>
     ),
     [GridTwelve, italics]
+  );
+
+  const onSubmit = useCallback(
+    (withSignature?: boolean) => {
+      handleChange({ target: { name: "withSignature", value: withSignature } });
+      submitForm();
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   const onSignature = useCallback(
@@ -94,7 +101,7 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           </GridTwelve>
           <GridTwelve classes={{ root: centered }}>
             <signature.Component
-              onBegin={() => !withSignature && setWithSignature(true)}
+              onBegin={() => !hasMarkedCanvas && setHasMarkedCanvas(true)}
               canvasProps={{ className: signatureStyles }}
               penColor={TEXT_COLOR}
             />
@@ -110,9 +117,9 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           </Button>
           <Button
             color="primary"
-            disabled={!withSignature}
+            disabled={!hasMarkedCanvas}
             onClick={onSignature(signature.reset, () =>
-              setWithSignature(false)
+              setHasMarkedCanvas(false)
             )}
             variant="outlined"
           >
@@ -120,10 +127,10 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           </Button>
           <Button
             color="primary"
-            disabled={!withSignature}
+            disabled={!hasMarkedCanvas}
             onClick={onSignature(signature.save, () => {
               setShowSignatureView(false);
-              submitForm();
+              onSubmit(true);
             })}
             variant="contained"
           >
@@ -322,7 +329,11 @@ export const ObjectionFormTemplate: React.FC<FormikProps<IObjectionModel>> = ({
           </Button>
         </GridSix>
         <GridSix classes={{ root: right }}>
-          <Button color="primary" onClick={submitForm} variant="contained">
+          <Button
+            color="primary"
+            onClick={() => onSubmit(false)}
+            variant="contained"
+          >
             {strings.buttons.createPrintObjectionForm}
           </Button>
         </GridSix>

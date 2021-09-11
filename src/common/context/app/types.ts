@@ -39,6 +39,7 @@ export type AppContextActions =
       type: AppContextAction.LANGUAGE;
     }
   | {
+      warningText: string;
       values: IObjectionModel;
       type: AppContextAction.PRINT;
     }

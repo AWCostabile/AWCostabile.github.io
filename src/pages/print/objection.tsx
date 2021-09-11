@@ -29,7 +29,7 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({ values }) => {
   const [signature] =
     printContext.items[PrintValueType.SIGNATURE] ?? defaultItem;
 
-  const hasSignature = signature.text === signatureText;
+  const hasSignature = signature.text === signatureText && values.withSignature;
   const withDateStamp = useMemo(
     () =>
       hasSignature ? (
@@ -104,7 +104,6 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({ values }) => {
       ))}
       {suggestions.map((suggestion, index) => (
         <React.Fragment key={index}>
-          {index === 0 && <br />}
           <PrintBreak
             {...(index === 0 && !suggestion.break
               ? { gapSize: addSpace ? addSpace + 1 : 2 }
@@ -135,14 +134,14 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({ values }) => {
       ))}
       <PrintBreak
         {...breakProps(signature.break, 2)}
-        gapSize={hasSignature ? 4 : 2}
+        gapSize={hasSignature ? 3 : 1}
       />
       <Grid container direction="column" alignItems="center">
         {currentLanguage === "english" ? (
           <Grid item container xs={11}>
             <PrintLine
               xs={8}
-              offset={hasSignature ? -72 : 0}
+              offset={hasSignature ? -64 : 0}
               label="Signed:"
               singleLine
               value={signatureImage}
@@ -153,7 +152,7 @@ export const PrintObjection: React.FC<IPrintObjectionProps> = ({ values }) => {
           <Grid item container xs={11}>
             <PrintLine
               xs={8}
-              offset={hasSignature ? -72 : 0}
+              offset={hasSignature ? -64 : 0}
               label="Signed:"
               singleLine
               subLabel={<em>{strings.document.signature}</em>}

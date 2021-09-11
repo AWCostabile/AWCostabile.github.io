@@ -20,4 +20,5 @@ export interface IObjectionModel {
     concerns: string;
     suggestedChanges: string;
   };
+  withSignature: boolean;
 }

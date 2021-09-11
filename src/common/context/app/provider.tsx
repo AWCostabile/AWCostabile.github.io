@@ -36,7 +36,11 @@ export const AppProvider: React.FC<IAppProviderProps> = ({
   }, [state.language]);
 
   const printData = useCallback((values: IObjectionModel) => {
-    dispatch({ type: AppContextAction.PRINT, values });
+    dispatch({
+      type: AppContextAction.PRINT,
+      values,
+      warningText: language.strings.warning,
+    });
   }, []);
 
   const resetData = useCallback(() => {
