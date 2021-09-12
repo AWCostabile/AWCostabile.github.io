@@ -30,8 +30,12 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "prebuild": "git checkout -b gh-pages --no-track origin/master",
-    "postbuild": "mv build docs && git push",
+    "deploy": "yarn build && yarn push",
+    "postbuild": "mv build docs",
+    "postdeploy": "git checkout master && git branch -D gh-pages",
+    "predeploy": "git checkout -b gh-pages --no-track origin/master",
+    "prepush": "git add . && git commit -m \"chore: deploy\"",
+    "push": "git push -u origin gh-pages",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
