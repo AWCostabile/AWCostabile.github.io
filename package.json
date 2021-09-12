@@ -25,16 +25,13 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-signature-canvas": "^1.0.2",
     "@types/uuid": "^8.3.1",
-    "gh-pages": "^3.2.3",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2"
   },
   "scripts": {
     "build": "react-scripts build",
-    "checkout": "git checkout -b gh-pages --no-track origin/master",
-    "clean": "git branch -D gh-pages && rm -rf build",
-    "deploy": "gh-pages -d build",
-    "predeploy": "npm run build",
+    "prebuild": "git checkout -b gh-pages --no-track origin/master",
+    "postbuild": "mv build docs && git push",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
