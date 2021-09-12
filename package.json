@@ -30,10 +30,14 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
+    "checkout:gh-pages": "git checkout -b gh-pages --no-track origin/master",
+    "checkout:master": "git checkout master",
+    "delete:gh-pages": "git branch -d gh-pages",
     "deploy": "gh-pages -d build",
-    "predeploy": "npm run build",
+    "predeploy": "npm run checkout:gh-pages && npm run build",
+    "postdeploy": "npm run checkout:master && npm run delete:gh-pages",
+    "start": "react-scripts start",
     "test": "react-scripts test"
   },
   "eslintConfig": {
