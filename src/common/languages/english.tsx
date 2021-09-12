@@ -1,4 +1,8 @@
-import { COMMUNITY_AMENITY, PROPOSAL_LINK } from "common/constants/app";
+import {
+  COMMUNITY_AMENITY,
+  NON_BREAKING_SPACE as N,
+  PROPOSAL_LINK,
+} from "common/constants/app";
 import { ILanguage } from "common/models/language";
 import { Link } from "components/link";
 
@@ -148,6 +152,14 @@ export const english: ILanguage = {
         would be willing to consider.
       </>,
       <>
+        In order to bolster our chances of having a strong argument against this
+        development, a number residents have commissioned an independent town
+        planner to assess the impacts such an over development of this area
+        would have on the Glen Waverley community. This report is due to be
+        released on Tuesday and will be added to this site in order to share it
+        amongst us.
+      </>,
+      <>
         As the deadline for objections is{" "}
         <strong>Thursday 16 September 2021</strong>, you should aim to complete
         this as soon as you can! Simply print off the form, sign and date the
@@ -160,6 +172,19 @@ export const english: ILanguage = {
       <Link to={PROPOSAL_LINK}>
         Proposed development at 251 -261 Springvale Road, Glen Waverley
       </Link>,
+      <>
+        Or you can join us on <strong>Tuesday 14th of September</strong> at
+        6.30pm for a zoom call to discuss these matters and for any help with
+        regards to writing your objection.
+        <span style={{ display: "block", padding: "0 16px" }}>
+          <br />
+          Meeting ID: 729 2514 1821
+          <br />
+          Password:{N}
+          {N}
+          {N}GLEN3150
+        </span>
+      </>,
       <>
         Please note, due to the fact that your device is responsible for
         generating the objection form, there is a possibility that the form you
