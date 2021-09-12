@@ -46,7 +46,13 @@ export class PrintHelper<Type> {
 
   // Split text block into paragraphs
   private static splitOnLineEndings = (text: string) =>
-    text.split(LINE_ENDING_PATTERN);
+    text
+      .split(LINE_ENDING_PATTERN)
+      .reduce(
+        (strings, value, index) =>
+          index % 3 === 0 ? [...strings, `${value.trim()}\n`] : strings,
+        [] as string[]
+      );
 
   // Split text block into sentences
   private static splitOnTerminators = (text: string) =>
@@ -197,7 +203,7 @@ export class PrintHelper<Type> {
 
   // Create a list of print items based on a given Type
   public getPrintQueue = (text: string, field: Type) => {
-    const paragraphs = this.generateParagraphs(text);
+    const paragraphs = this.generateParagraphs(text.trim());
     const printQueue = PrintHelper.toPrintQueue(paragraphs, field);
 
     return printQueue;

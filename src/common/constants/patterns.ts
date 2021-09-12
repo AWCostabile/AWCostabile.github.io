@@ -8,6 +8,6 @@ export const PHONE_PATTERN = /^(61\d{9}|(0\d{9})|\d{8})$/;
 
 export const POST_CODE_PATTERN = /^\d{4}$/;
 
-export const LINE_ENDING_PATTERN = /\n(\s)*\n+?/;
+export const LINE_ENDING_PATTERN = /(\n(\s)*)/;
 
 export const TERMINATORS_PATTERN = /(\w+)([.!]+)\s/;
