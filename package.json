@@ -27,14 +27,15 @@
     "@types/uuid": "^8.3.1",
     "gh-pages": "^3.2.3",
     "react-scripts": "4.0.3",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.2"
   },
   "scripts": {
     "build": "react-scripts build",
     "checkout:gh-pages": "git checkout -b gh-pages --no-track origin/master",
     "checkout:master": "git checkout master",
-    "delete:gh-pages": "git branch -D gh-pages",
-    "deploy": "gh-pages -d build",
+    "delete:gh-pages": "git branch -D gh-pages && cd .. && rimraf build",
+    "deploy": "gh-pages -d build && cd build",
     "predeploy": "npm run checkout:gh-pages && npm run build",
     "postbuild": "cp package.json build",
     "postdeploy": "npm run checkout:master && npm run delete:gh-pages",
