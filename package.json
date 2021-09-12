@@ -30,11 +30,11 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "build": "react-scripts build && cp .gitignore build",
-    "checkout:gh-pages": "git checkout -b gh-pages --no-track origin/master",
-    "clean-up": "git branch -D gh-pages",
-    "deploy": "gh-pages -d build && cp ../.gitignore .",
-    "predeploy": "npm run checkout:gh-pages && npm run build",
+    "build": "react-scripts build",
+    "checkout": "git checkout -b gh-pages --no-track origin/master",
+    "clean": "git branch -D gh-pages && rm -rf build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
