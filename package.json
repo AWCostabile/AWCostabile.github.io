@@ -33,7 +33,7 @@
     "build": "react-scripts build",
     "checkout:gh-pages": "git checkout -b gh-pages --no-track origin/master",
     "checkout:master": "git checkout master",
-    "delete:gh-pages": "git branch -d gh-pages",
+    "delete:gh-pages": "git branch -D gh-pages",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run checkout:gh-pages && npm run build",
     "postbuild": "cp package.json build",
