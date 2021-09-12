@@ -36,6 +36,7 @@
     "delete:gh-pages": "git branch -d gh-pages",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run checkout:gh-pages && npm run build",
+    "postbuild": "cp package.json build",
     "postdeploy": "npm run checkout:master && npm run delete:gh-pages",
     "start": "react-scripts start",
     "test": "react-scripts test"
