@@ -1,4 +1,4 @@
-import { COMMUNITY_AMENITY, PROPOSAL_LINK } from "common/constants/app";
+import { PUBLIC_AMENITY, PROPOSAL_LINK } from "common/constants/app";
 import { ILanguage } from "common/models/language";
 import { Link } from "components/link";
 
@@ -118,7 +118,7 @@ export const chinese: ILanguage = {
           <em>物業價格受影響</em>
         </strong>
         等等，不過市議會首要責任為提供{" "}
-        <Link to={COMMUNITY_AMENITY}>社區設施</Link>, 所以若您能提出例如該項目會怎樣影響公共安全，
+        <Link to={PUBLIC_AMENITY}>社區設施</Link>, 所以若您能提出例如該項目會怎樣影響公共安全，
         車位數目減少等理據，您的反對會變得更加強而有力。
       </>,
       <>

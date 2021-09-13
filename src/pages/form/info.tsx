@@ -19,7 +19,7 @@ export const ObjectionFormInformation: React.FC<{ italics?: string }> = ({
   }, [showText]);
 
   return (
-    <Expandable open={showText} sneekPeek={72}>
+    <Expandable open={showText} sneekPeek={100}>
       <Grid container justifyContent="space-between">
         <Grid item>
           <Typography variant="h6" align="justify">

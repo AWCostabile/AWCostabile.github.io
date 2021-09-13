@@ -13,7 +13,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ObjectionFormTemplate } from "./template";
 import { createValidationSchema } from "./validations";
 
-export const FormViewPage: React.FC = () => {
+export const FormViewPage: React.FC<{ isMobile?: boolean }> = () => {
   const { currentLanguage, strings } = useLanguage();
   const { initialValues, printData } = useSaveData();
   const [render, setRender] = useState(false);

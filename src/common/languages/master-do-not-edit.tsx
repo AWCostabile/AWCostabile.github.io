@@ -1,4 +1,4 @@
-import { COMMUNITY_AMENITY, PROPOSAL_LINK } from "common/constants/app";
+import { PUBLIC_AMENITY, PROPOSAL_LINK } from "common/constants/app";
 import { ILanguage } from "common/models/language";
 import { Link } from "components/link";
 
@@ -124,7 +124,7 @@ export const english: ILanguage = {
         </strong>
         , it is important to remember that the Council's responsibility first
         and formost is to look after the{" "}
-        <Link to={COMMUNITY_AMENITY}>community amenity</Link>, and as such, the
+        <Link to={PUBLIC_AMENITY}>community amenity</Link>, and as such, the
         strongest arguments you can provide will relate to how this development
         may affect public safety, how it may be a nuisance such as impact on
         parking, and how it may negatively impact the character of Glen
