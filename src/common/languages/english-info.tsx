@@ -166,7 +166,7 @@ export const englishInfo: ILanguage["info"] = {
       <Link to={`mailto:${EMAIL}`}>{EMAIL}</Link>
       <br />
       <br />
-      <em style={{ fontSize: "0.5em" }}>
+      <em style={{ fontSize: "0.8em" }}>
         ** Based on a preliminary search. A more detailed search of ASIC records
         will cost more than I am able to invest into this process, and I am
         already relying on the generosity of others to help cover the cost of
