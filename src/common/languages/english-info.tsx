@@ -129,14 +129,6 @@ export const englishInfo: ILanguage["info"] = {
           should consider community expectations and not only those of potential
           developers.
         </li>
-        <li>
-          Looking at ASIC records, businesses with a similar name have been
-          registered and de-registered could be a red flag if the developer has
-          a history of de-registering following a completed building. If this is
-          the case, it could potentially absolve them of their responsibilities
-          to the potential buyers should defects occur in the building later
-          down the track when the developer effectively does not exist. **
-        </li>
       </ul>
     </>,
     <>
@@ -167,10 +159,10 @@ export const englishInfo: ILanguage["info"] = {
       <br />
       <br />
       <em style={{ fontSize: "0.8em" }}>
-        ** Based on a preliminary search. A more detailed search of ASIC records
-        will cost more than I am able to invest into this process, and I am
-        already relying on the generosity of others to help cover the cost of
-        the town planner report.
+        The town planning report was commissioned by my family and I at a capped
+        invoice price of $3000. Whilst we will be sharing the report free of
+        charge, we welcome any contributions to help cover this cost and will
+        make public any payments made for this cause.
       </em>
     </>,
   ],

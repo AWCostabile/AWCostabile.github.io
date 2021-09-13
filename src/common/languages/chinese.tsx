@@ -65,7 +65,7 @@ export const chinese: ILanguage = {
     objection:                                "Enter your concerns and reasons for this object, as well as any changes you'd like to see",
   },
   titles: {
-    about:                                    "關於此反對書",
+    about:                                    "致Glen Waerley及周邊居民",
     concernedParty:                           "受影響個體(您本人)",
     header:                                   "反對小幫手",
     proposal:                                 "反對的規劃項目",
@@ -92,8 +92,9 @@ export const chinese: ILanguage = {
 
 
   // ==========================================================================
-  //  CREDITS -> Replace the name below with your name
+  //  CREDITS -> Jonathan Suen
   // ==========================================================================
 
   translationBy: "Jonathan Suen"
+
 };
