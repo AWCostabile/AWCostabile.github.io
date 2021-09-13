@@ -130,13 +130,12 @@ export const englishInfo: ILanguage["info"] = {
           developers.
         </li>
         <li>
-          It would appear as though the developer may have a history of
-          de-registering their property development businesses and
-          re-registering under other similar names shortly after a project's
-          completion. If this is the case, it could potentially absolve them of
-          their responsibilities to the potential buyers should defects occur in
-          the building later down the track when the developer effectively does
-          not exist.
+          Looking at ASIC records, businesses with a similar name have been
+          registered and de-registered could be a red flag if the developer has
+          a history of de-registering following a completed building. If this is
+          the case, it could potentially absolve them of their responsibilities
+          to the potential buyers should defects occur in the building later
+          down the track when the developer effectively does not exist. **
         </li>
       </ul>
     </>,
@@ -165,6 +164,14 @@ export const englishInfo: ILanguage["info"] = {
       <em>1213A 25 O' Sullivan Road</em>
       <br />
       <Link to={`mailto:${EMAIL}`}>{EMAIL}</Link>
+      <br />
+      <br />
+      <em style={{ fontSize: "0.5em" }}>
+        ** Based on a preliminary search. A more detailed search of ASIC records
+        will cost more than I am able to invest into this process, and I am
+        already relying on the generosity of others to help cover the cost of
+        the town planner report.
+      </em>
     </>,
   ],
 };
