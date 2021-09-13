@@ -45,14 +45,14 @@ export const englishInfo: ILanguage["info"] = {
     </>,
     <>
       Additionally, I have scheduled a Zoom meeting to be held on{" "}
-      <strong>Tuesday 14th September</strong> (details below) in order to answer
-      questions and help outline what is contained within the Town Planner's
-      report, as well as provide a platform for members of the Glen Waverley
-      community to discuss strategies we could collectively enact to help make
-      our case for objection stronger. Since the period for objection to this
-      proposal ends on the 16th, I strongly urge you to notify your neighbours
-      and local contacts in order to ensure as many people know about this
-      development as possible.
+      <strong>Tuesday 14th September</strong> (details below) at{" "}
+      <strong>6.30pm</strong> in order to answer questions and help outline what
+      is contained within the Town Planner's report, as well as provide a
+      platform for members of the Glen Waverley community to discuss strategies
+      we could collectively enact to help make our case for objection stronger.
+      Since the period for objection to this proposal ends on the 16th, I
+      strongly urge you to notify your neighbours and local contacts in order to
+      ensure as many people know about this development as possible.
     </>,
     <span style={{ display: "block", padding: "0 16px" }}>
       <strong>Zoom Meeting ID:</strong>
