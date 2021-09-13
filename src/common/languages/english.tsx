@@ -88,6 +88,7 @@ export const english: ILanguage = {
 
   info: englishInfo,
 
+
   // ==========================================================================
   //  CREDITS -> Replace the name below with your name
   // ==========================================================================
