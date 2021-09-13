@@ -113,20 +113,21 @@ export const englishInfo: ILanguage["info"] = {
         </li>
         <li>
           O'Sullivan Road is already a narrow through way often used by parents
-          to drop children off at the Primary school and at times used by those
-          looking to park around Glen Waverley for public transport usage.
+          to drop children off at the secondary school and is used by commuters
+          looking to park around Glen Waverley for access to public transport.
           Further construction for this building's proposed car park entrance,
-          shared with the Galleria building's own parking entrance will add to
-          the chaos around peak traffic times.
+          to be shared with the Galleria building's own parking entrance will
+          add to the chaos around peak traffic times.
         </li>
         <li>
           The developer's own report outlines the potentially harmful effects
           that wind may play on pedestrians using O'Sullivan Road.
         </li>
         <li>
-          The council need to be reminded that they serve existing residents of
-          their community, and should consider community expectations and not
-          only those of potential developers.
+          The council should be reminded that as our elected representatives,
+          they serve the residents of their community first and foremost, and
+          should consider community expectations and not only those of potential
+          developers.
         </li>
         <li>
           It would appear as though the developer may have a history of
